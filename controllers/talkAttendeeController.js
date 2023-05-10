@@ -27,7 +27,6 @@ exports.createTalkAttendee = async (req, res) => {
 };
 
 
-
 exports.getTalkAttendee = async (req, res) => {
   try {
     const talkAttendee = await TalkAttendee.findByPk(req.params.id);
