@@ -61,9 +61,6 @@ const options = {
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-// const specs = swaggerJsdoc(options);
-// app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
-
 
 // 404 handler
 app.use((req, res, next) => {
@@ -79,8 +76,6 @@ app.use((err, req, res, next) => {
       res.status(500).send('Something went wrong.');
     }
 });
-
-
 
 
 const PORT = process.env.PORT || 3030;

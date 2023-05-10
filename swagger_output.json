@@ -13,8 +13,21 @@
   "paths": {
     "/create": {
       "post": {
-        "description": "",
-        "parameters": [],
+        "tags": [
+          "Talk"
+        ],
+        "description": "Endpoint to create a new talk.",
+        "parameters": [
+          {
+            "name": "newTalk",
+            "in": "body",
+            "description": "Information for the new talk.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Talk"
+            }
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created"
@@ -30,13 +43,17 @@
     },
     "/{id}": {
       "delete": {
-        "description": "",
+        "tags": [
+          "Talk"
+        ],
+        "description": "Endpoint to delete a talk.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "Talk ID."
           }
         ],
         "responses": {
@@ -55,13 +72,17 @@
         }
       },
       "get": {
-        "description": "",
+        "tags": [
+          "Talk"
+        ],
+        "description": "Endpoint to get a specific talk.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "Talk ID."
           }
         ],
         "responses": {
@@ -80,13 +101,26 @@
         }
       },
       "put": {
-        "description": "",
+        "tags": [
+          "Talk"
+        ],
+        "description": "Endpoint to update a specific talk.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "Talk ID."
+          },
+          {
+            "name": "updatedTalk",
+            "in": "body",
+            "description": "Information for the updated talk.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Talk"
+            }
           }
         ],
         "responses": {
@@ -107,7 +141,10 @@
     },
     "/": {
       "get": {
-        "description": "",
+        "tags": [
+          "Talk"
+        ],
+        "description": "Endpoint to get all talks.",
         "parameters": [],
         "responses": {
           "200": {
@@ -124,13 +161,17 @@
     },
     "/talk/{talk_id}": {
       "get": {
-        "description": "",
+        "tags": [
+          "TalkAttendee"
+        ],
+        "description": "Endpoint to get attendees for a specific talk.",
         "parameters": [
           {
             "name": "talk_id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "Talk ID."
           }
         ],
         "responses": {
@@ -146,15 +187,19 @@
         }
       }
     },
-    "room/{id}": {
+    "/room/{id}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Room"
+        ],
+        "description": "Endpoint to get a specific room.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "Room ID."
           }
         ],
         "responses": {
@@ -169,27 +214,18 @@
     },
     "/register": {
       "post": {
-        "description": "",
+        "tags": [
+          "User"
+        ],
+        "description": "Endpoint to register a new user.",
         "parameters": [
           {
-            "name": "body",
+            "name": "newUser",
             "in": "body",
+            "description": "Information for the new user.",
+            "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "email": {
-                  "example": "any"
-                },
-                "password": {
-                  "example": "any"
-                },
-                "first_name": {
-                  "example": "any"
-                },
-                "last_name": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/User"
             }
           }
         ],
@@ -208,8 +244,21 @@
     },
     "/login": {
       "post": {
-        "description": "",
-        "parameters": [],
+        "tags": [
+          "User"
+        ],
+        "description": "Endpoint to login a user.",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "User login details.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserLogin"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -222,7 +271,10 @@
     },
     "/users": {
       "get": {
-        "description": "",
+        "tags": [
+          "User"
+        ],
+        "description": "Endpoint to get a list of users.",
         "parameters": [],
         "responses": {
           "200": {
@@ -236,27 +288,18 @@
     },
     "/register-admin": {
       "post": {
-        "description": "",
+        "tags": [
+          "Admin"
+        ],
+        "description": "Endpoint to register a new admin.",
         "parameters": [
           {
-            "name": "body",
+            "name": "newAdmin",
             "in": "body",
+            "description": "Information for the new admin.",
+            "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "email": {
-                  "example": "any"
-                },
-                "password": {
-                  "example": "any"
-                },
-                "first_name": {
-                  "example": "any"
-                },
-                "last_name": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/Admin"
             }
           }
         ],
