@@ -1,8 +1,9 @@
 // routes/talkAttendeeRoutes.js
 const express = require('express');
 const talkAttendeeController = require('../controllers/talkAttendeeController');
-
+const ensureAuthenticated = require('../middleware/ensureAuthenticated');
 const router = express.Router();
+router.use(ensureAuthenticated);
 
 // router.post('/create', talkAttendeeController.createTalkAttendee);
 router.post('/create', function(req, res) {

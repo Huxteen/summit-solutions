@@ -2,6 +2,8 @@
 const express = require('express');
 const speakerController = require('../controllers/speakerController');
 const router = express.Router();
+const ensureAuthenticated = require('../middleware/ensureAuthenticated');
+router.use(ensureAuthenticated);
 
 // add speaker
 // router.post('/create', speakerController.addSpeakerToTalk);
