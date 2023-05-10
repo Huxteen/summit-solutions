@@ -103,7 +103,7 @@ router.get('/', function(req, res) {
 // get speaker for specific talk
 // router.get('/talk/:talk_id', speakerController.getSpeakersForTalk);
 router.get('/talk/:talk_id', function(req, res) {
-    // #swagger.tags = ['Speakers']
+    // #swagger.tags = ['Speaker']
     // #swagger.description = 'Endpoint to get speakers for a specific talk.'
     /* #swagger.parameters['talk_id'] = {
             description: 'Talk ID.',
