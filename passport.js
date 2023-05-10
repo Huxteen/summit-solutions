@@ -22,17 +22,14 @@ passport.use(new LocalStrategy({
 }));
 
 passport.serializeUser((user, done) => {
-  console.log('Serializing user:', user);
   done(null, user.id);
 });
 
 passport.deserializeUser(async (id, done) => {
   try {
     const user = await User.findByPk(id);
-    console.log('Deserializing user:', user);
     done(null, user);
   } catch (err) {
-    console.error('Error in deserializeUser:', err);
     done(err);
   }
 });
