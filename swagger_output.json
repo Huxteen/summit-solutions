@@ -11,7 +11,18 @@
     "http"
   ],
   "paths": {
-    "/register": {
+    "/": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/auth/register": {
       "post": {
         "tags": [
           "User"
@@ -41,7 +52,7 @@
         }
       }
     },
-    "/login": {
+    "/auth/login": {
       "post": {
         "tags": [
           "User"
@@ -68,7 +79,7 @@
         }
       }
     },
-    "/users": {
+    "/auth/users": {
       "get": {
         "tags": [
           "User"
@@ -85,7 +96,7 @@
         }
       }
     },
-    "/register-admin": {
+    "/auth/register-admin": {
       "post": {
         "tags": [
           "Admin"
@@ -121,7 +132,359 @@
         }
       }
     },
-    "/create": {
+    "/talks/create": {
+      "post": {
+        "tags": [
+          "Talk"
+        ],
+        "description": "Endpoint to create a new talk.",
+        "parameters": [
+          {
+            "name": "newTalk",
+            "in": "body",
+            "description": "Information for the new talk.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Talk"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/talks/": {
+      "get": {
+        "tags": [
+          "Talk"
+        ],
+        "description": "Endpoint to get all talks.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/talks/{id}": {
+      "delete": {
+        "tags": [
+          "Talk"
+        ],
+        "description": "Endpoint to delete a talk.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "Talk ID."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Talk"
+        ],
+        "description": "Endpoint to get a specific talk.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "Talk ID."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Talk"
+        ],
+        "description": "Endpoint to update a specific talk.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "Talk ID."
+          },
+          {
+            "name": "updatedTalk",
+            "in": "body",
+            "description": "Information for the updated talk.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Talk"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/talks/room/{id}": {
+      "get": {
+        "tags": [
+          "Room"
+        ],
+        "description": "Endpoint to get a specific room.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "Room ID."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/speakers/create": {
+      "post": {
+        "tags": [
+          "Speaker"
+        ],
+        "description": "Endpoint to add a speaker to a talk.",
+        "parameters": [
+          {
+            "name": "newSpeaker",
+            "in": "body",
+            "description": "Information for the new speaker.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Speaker"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/speakers/{id}": {
+      "get": {
+        "tags": [
+          "Speaker"
+        ],
+        "description": "Endpoint to get a specific speaker.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "Speaker ID."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Speaker"
+        ],
+        "description": "Endpoint to update a specific speaker.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "Speaker ID."
+          },
+          {
+            "name": "updatedSpeaker",
+            "in": "body",
+            "description": "Information for the updated speaker.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Speaker"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Speaker"
+        ],
+        "description": "Endpoint to delete a specific speaker.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "Speaker ID."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/speakers/": {
+      "get": {
+        "tags": [
+          "Speaker"
+        ],
+        "description": "Endpoint to get all speakers.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/speakers/talk/{talk_id}": {
+      "get": {
+        "tags": [
+          "Speakers"
+        ],
+        "description": "Endpoint to get speakers for a specific talk.",
+        "parameters": [
+          {
+            "name": "talk_id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "Talk ID."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/talk-attendees/create": {
       "post": {
         "tags": [
           "TalkAttendee"
@@ -151,27 +514,7 @@
         }
       }
     },
-    "/": {
-      "get": {
-        "tags": [
-          "Speaker"
-        ],
-        "description": "Endpoint to get all speakers.",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/{id}": {
+    "/talk-attendees/{id}": {
       "get": {
         "tags": [
           "TalkAttendee"
@@ -200,21 +543,19 @@
             "description": "Not Found"
           }
         }
-      }
-    },
-    "/room/{id}": {
-      "get": {
+      },
+      "delete": {
         "tags": [
-          "Room"
+          "TalkAttendee"
         ],
-        "description": "Endpoint to get a specific room.",
+        "description": "Endpoint to delete a specific talk attendee.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "type": "integer",
-            "description": "Room ID."
+            "description": "Talk Attendee ID."
           }
         ],
         "responses": {
@@ -223,11 +564,17 @@
           },
           "401": {
             "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
     },
-    "/talk/{talk_id}": {
+    "/talk-attendees/talk/{talk_id}": {
       "get": {
         "tags": [
           "TalkAttendee"
