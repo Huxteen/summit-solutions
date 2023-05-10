@@ -2,6 +2,7 @@
 const express = require('express');
 const talkAttendeeController = require('../controllers/talkAttendeeController');
 const ensureAuthenticated = require('../middleware/ensureAuthenticated');
+const TalkAttendee = require('../models/TalkAttendee');
 const router = express.Router();
 router.use(ensureAuthenticated);
 
@@ -57,6 +58,25 @@ router.get('/talk/:talk_id', function(req, res) {
     // #swagger.responses[404] = { description: 'Talk not found.' }
     talkAttendeeController.getAttendeesForTalk(req, res);
 })
+
+
+//delete talk attendee
+router.delete('/:id', async (req, res) => {
+    // #swagger.tags = ['TalkAttendee']
+    // #swagger.description = 'Endpoint to delete a specific talk attendee.'
+    /* #swagger.parameters['id'] = {
+            description: 'Talk Attendee ID.',
+            type: 'integer'
+    } */
+    // #swagger.responses[200] = { 
+    //   description: 'Talk Attendee deleted successfully.', 
+    // }
+    // #swagger.responses[404] = { description: 'Talk Attendee not found.' }
+    talkAttendeeController.deleteTalkAttendee(req, res);
+});
+
+
+
 
 
 module.exports = router;

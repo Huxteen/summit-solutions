@@ -26,6 +26,7 @@ router.post('/create', function(req, res) {
 })
 
 
+
 // get specific speaker
 // router.get('/:id', speakerController.getSpeaker);
 router.get('/:id', function(req, res) {
@@ -102,7 +103,7 @@ router.get('/', function(req, res) {
 // get speaker for specific talk
 // router.get('/talk/:talk_id', speakerController.getSpeakersForTalk);
 router.get('/talk/:talk_id', function(req, res) {
-    // #swagger.tags = ['Speaker']
+    // #swagger.tags = ['Speakers']
     // #swagger.description = 'Endpoint to get speakers for a specific talk.'
     /* #swagger.parameters['talk_id'] = {
             description: 'Talk ID.',
@@ -115,7 +116,6 @@ router.get('/talk/:talk_id', function(req, res) {
     // #swagger.responses[404] = { description: 'Talk not found.' }
     speakerController.getSpeakersForTalk(req, res);
 })
-
 
 
 module.exports = router;

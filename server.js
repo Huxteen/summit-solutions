@@ -40,25 +40,13 @@ app.use(passport.session());
 app.use('/auth', userRoutes);
 app.use('/talks', talkRoutes);
 app.use('/speakers', speakerRoutes);
-app.use('/talkAttendees', talkAttendeeRoutes);
+app.use('/talk-attendees', talkAttendeeRoutes);
 
 app.get('/', (req, res) => {
     res.json({message: 'Hello summit solution'})
 })
 
-// Added Swagger UI API Documentation
-const options = {
-  definition: {
-    openapi: '3.0.0',
-    info: {
-      title: 'Talk Chat API',
-      version: '1.0.0',
-      description: 'A simple Express Talk Chat API',
-    }
-  },
-  apis: ['./routes/*.js'], // files containing annotations as above
-};
-
+// Swagger UI routes
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 
